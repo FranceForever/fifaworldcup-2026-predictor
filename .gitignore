@@ -1,0 +1,30 @@
+# Python specific
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+
+# Virtual environment
+venv/
+
+# VS Code settings
+.vscode/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Data files (if they are huge or you want to track them separately)
+data/*.csv
+# Optionally, if your CSV files are large, consider keeping only a small sample in Git
+
+# Model artifacts (if they get large)
+models/
+
+# Node modules (for the React frontend)
+frontend/node_modules/
+
+# Build directories for frontend
+frontend/build/

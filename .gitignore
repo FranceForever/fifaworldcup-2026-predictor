@@ -17,7 +17,7 @@ venv/
 *.log
 
 # Data files (if they are huge or you want to track them separately)
-data/*.csv
+# data/*.csv
 # Optionally, if your CSV files are large, consider keeping only a small sample in Git
 
 # Model artifacts (if they get large)

@@ -1,0 +1,212 @@
+team,win_rate_last10,avg_goal_diff_last10
+South Africa,0.6,0.5
+Uruguay,0.2,0.0
+Argentina,0.6,1.3
+England,0.7,1.4
+South Korea,0.7,1.8
+Algeria,0.7,1.7
+Germany,0.6,1.7
+Serbia,0.1,-0.4
+Netherlands,0.4,0.8
+Italy,0.5,0.3
+Japan,0.9,3.6
+Brazil,0.4,0.8
+Ivory Coast,0.7,1.9
+New Zealand,0.8,3.2
+Spain,0.9,1.5
+Honduras,0.2,-0.4
+Greece,0.6,1.1
+France,0.5,0.6
+Slovenia,0.2,-0.2
+Cameroon,0.5,0.7
+Ghana,0.5,0.1
+Slovakia,0.5,0.4
+Chile,0.1,-0.9
+Portugal,0.5,0.9
+Mexico,0.5,0.3
+Nigeria,0.2,0.2
+United States,0.3,0.1
+Australia,0.5,1.5
+Denmark,0.2,0.0
+Paraguay,0.3,-0.3
+Switzerland,0.1,-0.6
+North Korea,0.3,0.4
+Estonia,0.1,-1.6
+Israel,0.2,-1.0
+Lithuania,0.2,-0.7
+Luxembourg,0.2,-0.3
+Montenegro,0.3,-0.6
+Sweden,0.6,1.2
+San Marino,0.2,-1.3
+Romania,0.6,1.0
+Liechtenstein,0.0,-1.6
+Moldova,0.5,0.1
+Kazakhstan,0.2,-1.8
+Armenia,0.2,-0.5
+Belgium,0.2,-0.3
+Andorra,0.0,-1.7
+Latvia,0.2,-1.3
+Iceland,0.3,-0.5
+Faroe Islands,0.1,-0.5
+North Macedonia,0.6,0.6
+Turkey,0.5,0.1
+Scotland,0.2,-0.6
+Russia,0.6,0.6
+Norway,0.6,1.2
+Malta,0.2,-1.5
+Hungary,0.3,-0.8
+Albania,0.2,-0.4
+Georgia,0.3,-0.2
+Czech Republic,0.4,0.2
+Croatia,0.3,-0.2
+Bulgaria,0.2,-0.6
+Bosnia and Herzegovina,0.0,-2.3
+Belarus,0.3,0.1
+Austria,0.5,1.0
+Republic of Ireland,0.3,-0.9
+Wales,0.4,0.8
+Northern Ireland,0.5,0.8
+Cyprus,0.2,-2.7
+Finland,0.2,-1.0
+Azerbaijan,0.2,-1.5
+Montserrat,0.2,-0.6
+Vietnam,0.3,-0.7
+Nepal,0.1,-2.3
+Mongolia,0.2,-2.6
+Sri Lanka,0.1,-2.2
+Cambodia,0.0,-4.3
+Bangladesh,0.1,-2.3
+Afghanistan,0.3,-1.0
+Malaysia,0.5,-0.2
+Colombia,0.4,0.7
+Turks and Caicos Islands,0.0,-4.444444444444445
+Taiwan,0.2,-1.3
+United States Virgin Islands,0.1,-2.6
+Philippines,0.1,-1.1
+Palestine,0.2,-0.3
+Laos,0.0,-2.8
+Macau,0.125,-2.625
+Myanmar,0.1,-3.2
+Pakistan,0.1,-2.7
+Bolivia,0.3,-1.5
+Aruba,0.3,-1.8
+Dominican Republic,0.4,0.7
+Peru,0.1,-0.8
+Bahamas,0.2,-2.0
+Venezuela,0.3,-0.2
+British Virgin Islands,0.0,-2.7
+Saint Lucia,0.1,-2.1
+Belize,0.3,-0.5
+United Arab Emirates,0.6,1.6
+Turkmenistan,0.3,-1.0
+Thailand,0.2,-0.3
+Syria,0.3,-0.4
+Singapore,0.2,-2.5
+Saudi Arabia,0.3,0.0
+Qatar,0.5,-0.2
+Uzbekistan,0.7,1.0
+Oman,0.5,0.4
+Lebanon,0.1,-0.9
+Kuwait,0.1,-0.9
+Jordan,0.6,1.8
+Iraq,0.7,1.2
+Iran,0.8,1.5
+China PR,0.3,-0.8
+Yemen,0.2,-0.5
+Tajikistan,0.4,0.8
+Maldives,0.2,-1.4
+Kyrgyzstan,0.3,-0.1
+Indonesia,0.4,0.1
+India,0.2,-0.4
+Hong Kong,0.1,-1.4
+Suriname,0.5,0.9
+Saint Kitts and Nevis,0.4,-0.6
+Trinidad and Tobago,0.4,0.6
+Guatemala,0.7,2.7
+Antigua and Barbuda,0.4,0.0
+Bahrain,0.3,0.3
+Canada,0.1,-0.9
+El Salvador,0.2,-0.3
+Grenada,0.2,-1.0
+Guyana,0.2,-1.6
+Haiti,0.6,0.9
+Dominica,0.2,-1.1
+Nicaragua,0.8,2.1
+Puerto Rico,0.6,2.2
+Barbados,0.3,-0.3
+Cayman Islands,0.1,-2.6
+Curaçao,0.5,1.6
+Saint Vincent and the Grenadines,0.1,-3.7
+Bermuda,0.3,-0.3
+Ecuador,0.4,0.6
+Panama,0.5,-0.4
+São Tomé and Príncipe,0.1,-1.8
+Seychelles,0.0,-4.0
+Eswatini,0.2,-0.1
+Lesotho,0.2,0.1
+Chad,0.2,-1.3
+Comoros,0.3,0.0
+Djibouti,0.0,-3.3
+Equatorial Guinea,0.6,0.3
+Eritrea,0.0,-1.5
+Guinea-Bissau,0.2,-0.5
+Somalia,0.1,-1.8
+Madagascar,0.3,-0.2
+Mozambique,0.4,-0.5
+Namibia,0.2,-0.4
+Rwanda,0.2,-0.5
+Tanzania,0.4,-0.2
+Togo,0.2,-0.2
+Burundi,0.4,0.1
+Congo,0.0,-1.4
+DR Congo,0.5,0.5
+Kenya,0.2,-0.1
+Ethiopia,0.1,-0.6
+Samoa,0.5,-0.7
+American Samoa,0.42857142857142855,0.0
+Tonga,0.25,-0.75
+Egypt,0.7,1.4
+Tunisia,0.6,0.9
+Sierra Leone,0.4,-0.2
+Senegal,0.5,0.3
+Gambia,0.2,-0.3
+Central African Republic,0.2,-0.7
+Sudan,0.3,-0.1
+Burkina Faso,0.4,1.0
+Zimbabwe,0.0,-0.9
+Benin,0.5,0.2
+Angola,0.2,-0.1
+Niger,0.3,-0.7
+Poland,0.1,-1.0
+Jamaica,0.3,-0.9
+Cuba,0.3,0.1
+Costa Rica,0.6,0.0
+Zambia,0.3,-0.2
+Uganda,0.4,0.1
+Morocco,0.6,1.0
+Malawi,0.3,-0.9
+Gabon,0.5,0.1
+Cape Verde,0.5,0.2
+Botswana,0.5,0.3
+Mali,0.5,1.0
+Libya,0.4,-0.2
+Guinea,0.2,-0.6
+Liberia,0.3,-0.4
+Ukraine,0.4,-0.1
+New Caledonia,0.3,-0.6
+Solomon Islands,0.5,-0.5
+Tahiti,0.4,0.1
+Gibraltar,0.1,-3.0
+Timor-Leste,0.0,-5.5
+Bhutan,0.2,-4.0
+Brunei,0.3333333333333333,-2.3333333333333335
+Anguilla,0.0,-4.3
+Guam,0.0,-3.2
+Cook Islands,0.25,-0.5
+South Sudan,0.0,-1.5
+Mauritius,0.125,-1.125
+Mauritania,0.0,-1.4
+Kosovo,0.6,0.9
+Papua New Guinea,0.3,-0.4
+Fiji,0.2,-0.8
+Vanuatu,0.3333333333333333,-2.0

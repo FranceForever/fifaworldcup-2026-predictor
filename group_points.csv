@@ -1,0 +1,33 @@
+group,team,points,goal_difference,group_rank
+Group A,Brazil,3,-4,3
+Group A,Germany,6,2,2
+Group A,Japan,9,10,1
+Group A,Nigeria,0,-8,4
+Group B,Argentina,3,0,3
+Group B,France,0,-9,4
+Group B,South Korea,7,5,1
+Group B,Egypt,7,4,2
+Group C,Mexico,3,-1,3
+Group C,Belgium,0,-5,4
+Group C,Iran,9,6,1
+Group C,South Africa,6,0,2
+Group D,Uruguay,0,-9,4
+Group D,Spain,9,9,1
+Group D,Saudi Arabia,3,-2,3
+Group D,Cameroon,6,2,2
+Group E,Colombia,3,-1,3
+Group E,England,9,7,1
+Group E,Tunisia,6,4,2
+Group E,Canada,0,-10,4
+Group F,Ecuador,0,-3,4
+Group F,Italy,4,0,2
+Group F,Australia,4,0,3
+Group F,Morocco,9,3,1
+Group G,Peru,0,-6,4
+Group G,Netherlands,3,-2,3
+Group G,USA,7,5,1
+Group G,Ghana,7,3,2
+Group H,Chile,0,-6,4
+Group H,Portugal,3,-2,3
+Group H,Costa Rica,6,1,2
+Group H,Ivory Coast,9,7,1

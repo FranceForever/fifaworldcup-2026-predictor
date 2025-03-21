@@ -7,6 +7,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader, random_split
 import pickle
+from sklearn.metrics import confusion_matrix, classification_report
 
 # Set random seeds for reproducibility
 torch.manual_seed(42)
@@ -21,10 +22,10 @@ if not os.path.exists(data_file):
     exit(1)
 df = pd.read_csv(data_file)
 
-# Preserve team identity
+# Preserve team identity for later mapping (if needed)
 team_info = df[['home_team', 'away_team']].copy()
 
-# Create mappings for non-numeric columns (if not already done)
+# Create non-numeric mappings (for columns that are not used as model input)
 non_numeric_cols = ['home_team', 'away_team', 'tournament']
 non_numeric_mappings = {}
 for col in non_numeric_cols:
@@ -37,8 +38,8 @@ with open('non_numeric_mappings.pkl', 'wb') as f:
     pickle.dump(non_numeric_mappings, f)
 print("Non-numeric column mappings saved to non_numeric_mappings.pkl")
 
-# Define columns to exclude from features
-exclude_cols = ['match_outcome', 'home_team', 'away_team', 'tournament', 'date', 'city', 'country', 'home_last_date', 'away_last_date']
+# Define columns to exclude from features (we assume raw strings are not used)
+exclude_cols = ['match_outcome', 'home_team', 'away_team', 'tournament']
 feature_cols = [col for col in df.columns if col not in exclude_cols]
 print("Using feature columns:", feature_cols)
 
@@ -48,18 +49,7 @@ except Exception as e:
     print("Error converting features to float:", e)
     exit(1)
 
-# Create a dummy target if needed (replace with your true target)
-def create_dummy_outcome(row):
-    if row['ranking_diff'] > 5:
-        return 2  # Home win
-    elif row['ranking_diff'] < -5:
-        return 0  # Away win
-    else:
-        return 1  # Draw
-
-if 'match_outcome' not in df.columns:
-    df['match_outcome'] = df.apply(create_dummy_outcome, axis=1)
-
+# Use the actual match outcome computed earlier as target
 y = df['match_outcome'].values.astype(np.int64)
 print("Feature matrix shape:", X.shape)
 print("Target vector shape:", y.shape)
@@ -96,43 +86,29 @@ print(f"Dataset split: {train_size} training, {val_size} validation, {test_size}
 class FootballNN(nn.Module):
     def __init__(self, input_dim, hidden_dim=256, output_dim=3):
         super(FootballNN, self).__init__()
-        # First layer
         self.fc1 = nn.Linear(input_dim, hidden_dim)
         self.bn1 = nn.BatchNorm1d(hidden_dim)
-        
-        # Second layer
         self.fc2 = nn.Linear(hidden_dim, hidden_dim)
         self.bn2 = nn.BatchNorm1d(hidden_dim)
-        
-        # Third layer with a residual connection from fc1 output
         self.fc3 = nn.Linear(hidden_dim, hidden_dim // 2)
         self.bn3 = nn.BatchNorm1d(hidden_dim // 2)
-        
-        # Final output layer
         self.fc4 = nn.Linear(hidden_dim // 2, output_dim)
-        
         self.relu = nn.ReLU()
         self.dropout = nn.Dropout(0.3)
         
     def forward(self, x):
-        # First layer
         x1 = self.fc1(x)
         x1 = self.bn1(x1)
         x1 = self.relu(x1)
         x1 = self.dropout(x1)
-        
-        # Second layer
         x2 = self.fc2(x1)
         x2 = self.bn2(x2)
         x2 = self.relu(x2)
         x2 = self.dropout(x2)
-        
-        # Third layer with residual connection from x1
         x3 = self.fc3(x2)
         x3 = self.bn3(x3)
-        x3 = self.relu(x3 + x1[:, :x3.shape[1]])  # residual connection (slice to match dimensions)
+        x3 = self.relu(x3 + x1[:, :x3.shape[1]])  # Residual connection
         x3 = self.dropout(x3)
-        
         output = self.fc4(x3)
         return output
 
@@ -140,11 +116,8 @@ input_dim = X.shape[1]
 model = FootballNN(input_dim=input_dim)
 print("Neural network defined with input dimension:", input_dim)
 
-# Use CrossEntropyLoss and Adam optimizer with weight decay for regularization
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-5)
-
-# Setup a learning rate scheduler: reduce LR on plateau of validation loss.
 scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.5, patience=5, verbose=True)
 
 # ============================
@@ -160,6 +133,8 @@ def evaluate(model, loader):
     total_loss = 0.0
     correct = 0
     count = 0
+    all_preds = []
+    all_targets = []
     with torch.no_grad():
         for inputs, targets in loader:
             inputs, targets = inputs.to(device), targets.to(device)
@@ -169,7 +144,9 @@ def evaluate(model, loader):
             _, preds = torch.max(outputs, 1)
             correct += (preds == targets).sum().item()
             count += inputs.size(0)
-    return total_loss / count, correct / count
+            all_preds.extend(preds.cpu().numpy())
+            all_targets.extend(targets.cpu().numpy())
+    return total_loss / count, correct / count, all_preds, all_targets
 
 best_val_loss = np.inf
 for epoch in range(num_epochs):
@@ -183,24 +160,20 @@ for epoch in range(num_epochs):
         loss.backward()
         optimizer.step()
         running_loss += loss.item() * inputs.size(0)
-    
-    train_loss = running_loss / len(train_dataset)
-    val_loss, val_acc = evaluate(model, val_loader)
+    train_loss = running_loss / train_size
+    val_loss, val_acc, _, _ = evaluate(model, val_loader)
     print(f"Epoch {epoch+1}/{num_epochs}: Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}, Val Acc: {val_acc:.4f}")
-    
-    # Step the scheduler based on validation loss
     scheduler.step(val_loss)
-    
     if val_loss < best_val_loss:
         best_val_loss = val_loss
         torch.save(model.state_dict(), 'best_model.pt')
         print(f"Best model saved at epoch {epoch+1}")
 
-# ============================
-# Part 5: Evaluate on Test Set
-# ============================
-test_loss, test_acc = evaluate(model, test_loader)
+test_loss, test_acc, all_preds, all_targets = evaluate(model, test_loader)
 print(f"Test Loss: {test_loss:.4f}, Test Accuracy: {test_acc:.4f}")
-
+print("Confusion Matrix:")
+print(confusion_matrix(all_targets, all_preds))
+print("Classification Report:")
+print(classification_report(all_targets, all_preds))
 torch.save(model.state_dict(), 'final_model.pt')
 print("Final model saved to final_model.pt")
